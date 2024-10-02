@@ -49,7 +49,7 @@ Location: Australia
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-e
+
 
 ### Instructions for Use
 - Replace `your_resource_name` with the actual name of your resource folder in the installation section.
