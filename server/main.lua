@@ -13,7 +13,7 @@
         end
     
         -- ACE permission check
-        if not IsPlayerAceAllowed(source, "hold.admin") then
+        if not IsPlayerAceAllowed(source, "group.admin") then
             TriggerClientEvent('chat:addMessage', source, {
                 color = { 255, 0, 0 },
                 multiline = true,
@@ -37,10 +37,11 @@
             TriggerClientEvent('stopHold', targetId)
         end
     end
-    
+ 
     -- Register /hold command
     RegisterCommand('hold', function(source, args, rawCommand)
         -- Check if an ID was provided
+
         local targetId = tonumber(args[1])
         if not targetId then
             TriggerClientEvent('chat:addMessage', source, {
@@ -52,8 +53,10 @@
         end
     
         handleHoldCommand(source, targetId, "hold")
-    end, false)
+    end, true)
     
+
+
     -- Register /unhold command
     RegisterCommand('unhold', function(source, args, rawCommand)
         -- Check if an ID was provided
@@ -68,4 +71,21 @@
         end
     
         handleHoldCommand(source, targetId, "unhold")
-    end, false)
+    end, true)
+
+    TriggerEvent('chat:addSuggestions', {
+        {
+            name='/hold',
+            help='Holds Player(s), Infront of ped who exectued command',
+            params={
+                { name="ID", help="ID of the player you want to hold" }
+            }
+        },
+        {
+            name='/unhold',
+            help='Reverses effects of /hold',
+            params={
+                { name="ID", help="ID of player you wish to unhold" }
+            }
+        },
+    })
