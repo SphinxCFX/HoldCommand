@@ -6,10 +6,10 @@ description "Holds a player infront of who registered command, for admin situati
 author "SphinxCFX"
 version "1.0.0"
 
-shared_scripts {
-	'shared/*.lua'
+client_scripts {
+	'client/*main.lua'
 }
 
-client_scripts {
-	'client/*.lua'
+server_scripts {
+	'server/*main.lua'
 }
